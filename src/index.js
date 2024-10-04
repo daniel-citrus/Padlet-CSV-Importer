@@ -3,12 +3,16 @@ import './style/style.css';
 const API_KEY =
     'pdltp_01d47008663dee1ddceaac8f60c53b8dc2d491f5d1287135c84ab844040d7654026d3f';
 const BOARD_ID = 'ug6iwn6vavccerwj';
+const button = document.getElementById('creator');
 
-getBoard(API_KEY, BOARD_ID)
-    .then((response) => response.text())
-    .then((result) => console.log(result));
+button.addEventListener('click', () => {
+    const post = createPostJSON();
+    insertPost(API_KEY, BOARD_ID);
+});
 
-function createPostJSON(boardID) {
+gatherSections(API_KEY, BOARD_ID);
+
+function createPostJSON() {
     return {
         data: {
             type: 'post',
@@ -29,35 +33,11 @@ function createPostJSON(boardID) {
     };
 }
 
-/* 
-{
-            type: 'post',
-            attributes: {
-                content: {
-                    subject: `Daniel's first API post`,
-                    body: 'If you see this, then the API post worked.',
-                    attachment: {
-                        url: 'www.daniel-calvo.com',
-                        caption: `Daniel's website`,
-                    },
-                },
-                color: 'orange',
-            },
-            relationships: {
-                section: {
-                    data: {
-                        id: boardID,
-                    },
-                },
-            },
-        }
-*/
-
-insertPost(API_KEY, BOARD_ID, createPostJSON(BOARD_ID));
-
+// get board object
 async function getBoard(API, boardID) {
     const board = await fetch(
-        `https://api.padlet.dev/v1/boards/${boardID}?include=posts%2Csections`,
+        `https://api.padlet.dev/v1/boards/${boardID}?include=posts,sections`,
+        // options
         {
             headers: {
                 'X-Api-Key': API,
@@ -79,4 +59,26 @@ async function insertPost(API, boardID, post) {
         },
         body: JSON.stringify(post),
     });
+}
+
+// get all existing sections
+// create map for sections {title: id}
+async function gatherSections(API, boardID) {
+    const boardData = await getBoard(API, boardID)
+        .then((response) => response.text())
+        .then((result) => JSON.parse(result));
+
+    const included = boardData.included;
+    const sections = new Map();
+
+    for (let obj of included) {
+        if (obj.type !== 'section') {
+            continue;
+        }
+
+        const title = obj.attributes.title;
+        const id = obj.id;
+
+        sections.set(title, id);
+    }
 }

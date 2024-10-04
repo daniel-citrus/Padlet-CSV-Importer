@@ -1,3 +1,9 @@
 body {
-    background: red;
+    background: #020204;
+}
+
+button {
+    border: 2px dashed #22b455;
+    background: #020204;
+    color: #22b455;
 }
