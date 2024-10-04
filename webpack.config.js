@@ -13,6 +13,15 @@ module.exports = (end, argv) => {
                     test: /\.css$/i,
                     use: [MiniCssExtractPlugin.loader, 'css-loader'],
                 },
+                {
+                    test: /\.csv$/,
+                    loader: 'csv-loader',
+                    options: {
+                        dynamicTyping: true,
+                        header: true,
+                        skipEmptyLines: true,
+                    },
+                },
             ],
         },
         output: {
