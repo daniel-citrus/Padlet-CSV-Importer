@@ -1,5 +1,5 @@
 import './style/style.css';
-import dataFile from './csv/Copy of HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
+import dataFile from './csv/HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
 import { limiter } from './bottleneck';
 import newFile from './csv-parser';
 import Papa from 'papaparse';
