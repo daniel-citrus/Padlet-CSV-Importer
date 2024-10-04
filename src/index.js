@@ -1,7 +1,7 @@
-import './style/style.css';
+import './style/style.scss';
+import './input-form.js';
 import dataFile from './csv/HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
 import { limiter } from './bottleneck';
-import * as form from './input-form';
 import newFile from './csv-parser';
 import Papa from 'papaparse';
 
@@ -9,19 +9,7 @@ import Papa from 'papaparse';
     'pdltp_01d47008663dee1ddceaac8f60c53b8dc2d491f5d1287135c84ab844040d7654026d3f';
 const BOARD_ID = 'ug6iwn6vavccerwj'; */
 
-form.button.addEventListener('click', async () => {
-    const API_KEY = form.api_key;
-    const BOARD_ID = form.board_id;
-    const dataFile = form.data_file.files[0];
-
-    try {
-        await startImport(API_KEY, BOARD_ID, dataFile);
-    } catch (error) {
-        throw error;
-    }
-});
-
-async function startImport(api_key, board_id, data_file) {
+export async function startImport(api_key, board_id, data_file) {
     try {
         Papa.parse(data_file, {
             complete: (results) => {
@@ -30,6 +18,7 @@ async function startImport(api_key, board_id, data_file) {
             header: true,
         });
     } catch (error) {
+        console.log('hi');
         throw error;
     }
 }
