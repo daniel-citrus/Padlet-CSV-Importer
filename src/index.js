@@ -1,6 +1,6 @@
 import './style/style.css';
 import dataFile from './csv/Copy of HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
-import limiter from './bottleneck';
+import { limiter } from './bottleneck';
 import newFile from './csv-parser';
 import Papa from 'papaparse';
 
@@ -62,7 +62,10 @@ async function populateBoard(data) {
         for (let header of dataHeaders) {
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
-            insertPost(API_KEY, BOARD_ID, post);
+
+            await limiter.schedule(() => {
+                return Promise.all([insertPost(API_KEY, BOARD_ID, post)]);
+            });
         }
     }
 }
