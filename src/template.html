@@ -6,6 +6,35 @@
         <title><%= htmlWebpackPlugin.options.title %></title>
     </head>
     <body>
-        <button id="creator">Import Data</button>
+        <form>
+            <input
+                type="text"
+                required
+                name="api_key"
+                id="api_key"
+                placeholder="API Key"
+            />
+            <input
+                type="text"
+                required
+                name="board_id"
+                id="board_id"
+                placeholder="Board ID"
+            />
+            <div id="drop_zone">
+                <input
+                    type="file"
+                    required
+                    name="data_file"
+                    id="data_file"
+                    placeholder=""
+                />
+            </div>
+            <button id="import" type="button">Import Data</button>
+        </form>
+
+        <div class="importing hidden">
+            <h2>Importing</h2>
+        </div>
     </body>
 </html>

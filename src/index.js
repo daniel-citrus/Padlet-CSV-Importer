@@ -1,27 +1,31 @@
 import './style/style.css';
 import dataFile from './csv/HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
 import { limiter } from './bottleneck';
+import * as form from './input-form';
 import newFile from './csv-parser';
 import Papa from 'papaparse';
 
-const API_KEY =
+/* const API_KEY =
     'pdltp_01d47008663dee1ddceaac8f60c53b8dc2d491f5d1287135c84ab844040d7654026d3f';
-const BOARD_ID = 'ug6iwn6vavccerwj';
-const button = document.getElementById('creator');
+const BOARD_ID = 'ug6iwn6vavccerwj'; */
 
-button.addEventListener('click', async () => {
+form.button.addEventListener('click', async () => {
+    const API_KEY = form.api_key;
+    const BOARD_ID = form.board_id;
+    const dataFile = form.data_file.files[0];
+
     try {
-        await startImport();
+        await startImport(API_KEY, BOARD_ID, dataFile);
     } catch (error) {
         throw error;
     }
 });
 
-async function startImport() {
+async function startImport(api_key, board_id, data_file) {
     try {
-        Papa.parse(newFile(dataFile), {
+        Papa.parse(data_file, {
             complete: (results) => {
-                populateBoard(results);
+                populateBoard(api_key, board_id, results);
             },
             header: true,
         });
@@ -39,32 +43,25 @@ async function startImport() {
         meta:   // object with extra info
     }
  */
-async function populateBoard(data) {
+async function populateBoard(api_key, board_id, data_file) {
     // get headers from data
-    let dataHeaders = data.meta.fields;
+    let dataHeaders = data_file.meta.fields;
 
     // using headers, get section ids from board
-    const sectionIDs = await gatherSections(API_KEY, BOARD_ID);
+    const sectionIDs = await gatherSections(api_key, board_id);
 
-    // delete dataHeaders that do not exist in the board
+    // delete dataHeaders that do not exist on the board
     dataHeaders = dataHeaders.filter((header) => {
         return sectionIDs.has(header);
     });
 
-    /* 
-    for each data entry
-        for each header title
-            for each create post json
-            insert post
-    */
-
-    for (let entry of data.data) {
+    for (let entry of data_file.data) {
         for (let header of dataHeaders) {
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
 
             await limiter.schedule(() => {
-                return Promise.all([insertPost(API_KEY, BOARD_ID, post)]);
+                return Promise.all([insertPost(api_key, board_id, post)]);
             });
         }
     }
