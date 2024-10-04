@@ -7,12 +7,12 @@ const button = document.getElementById('creator');
 
 button.addEventListener('click', () => {
     const post = createPostJSON();
-    insertPost(API_KEY, BOARD_ID);
+    insertPost(API_KEY, BOARD_ID, post);
 });
 
 gatherSections(API_KEY, BOARD_ID);
 
-function createPostJSON() {
+function createPostJSON(sectionID) {
     return {
         data: {
             type: 'post',
@@ -27,6 +27,13 @@ function createPostJSON() {
                         caption: `Daniel's website`,
                     },
                     color: 'orange',
+                },
+            },
+            relationships: {
+                section: {
+                    data: {
+                        id: 'sec_mWng4l10KnMJ2zdJ',
+                    },
                 },
             },
         },
@@ -81,4 +88,6 @@ async function gatherSections(API, boardID) {
 
         sections.set(title, id);
     }
+
+    console.log(sections);
 }
