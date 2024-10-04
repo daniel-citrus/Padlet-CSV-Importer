@@ -58,7 +58,6 @@ async function populateBoard(data) {
     */
 
     for (let entry of data.data) {
-        console.log(entry);
         for (let header of dataHeaders) {
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
