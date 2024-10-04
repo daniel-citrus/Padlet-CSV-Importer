@@ -140,6 +140,10 @@ table {
 body {
     background: #0d0208;
     color: #00ec3b;
+
+    .hidden {
+        display: none;
+    }
 }
 
 button {
