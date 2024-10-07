@@ -108,6 +108,11 @@ section {
     display: block;
 }
 
+body,
+html {
+    height: 100%;
+}
+
 body {
     line-height: 1;
 }
@@ -148,6 +153,10 @@ body {
     .hidden {
         display: none;
     }
+
+    & > * {
+        margin-bottom: 40px;
+    }
 }
 
 button {
@@ -162,6 +171,7 @@ button {
 form {
     display: flex;
     flex-flow: column nowrap;
+    gap: 15px;
 
     #drop_zone {
         display: flex;
@@ -169,4 +179,43 @@ form {
         border: 3px dashed var(--primary-color);
         padding: 25px;
     }
+
+    button {
+        padding: 10px;
+    }
+}
+
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 30px;
+    padding: 25px 0px;
+
+    .logo .padlet_logo {
+        height: 100px;
+        width: auto;
+    }
+}
+
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+@media only screen and (min-width: 767px) {
+    .header {
+        .logo .padlet_logo {
+            height: 120px;
+            width: auto;
+        }
+    }
+}
+@media only screen and (min-width: 991px) {
+}
+@media only screen and (min-width: 1279px) {
 }

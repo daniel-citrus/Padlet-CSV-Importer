@@ -8,16 +8,15 @@
     <body>
         <div class="header">
             <div class="logo">
-                <img class="padlet_logo" src="" alt="Padlet Logo" />
+                <img class="padlet_logo" />
             </div>
             <h1>Padlet Importer</h1>
         </div>
         <div class="main">
-            <div class="instructions"></div>
             <form>
                 <label for="api_key">API Key</label>
                 <input
-                    type="text"
+                    type="password"
                     required
                     name="api_key"
                     id="api_key"
@@ -32,7 +31,7 @@
                     placeholder="Board ID"
                 />
                 <div id="drop_zone">
-                    <label for="api_key">Data File</label>
+                    <label for="api_key">Upload File(s)</label>
                     <input
                         type="file"
                         required
@@ -45,13 +44,22 @@
                 <button id="import" type="button">Import Data</button>
             </form>
 
-            <!-- Loading Screen -->
-            <div class="importing hidden">
-                <div class="container">
-                    <h2>Importing</h2>
-                    <div class="ldBar" id="ldBar" data-value="50"></div>
+            <div class="pop_ups">
+                <div class="instructions"></div>
+                <!-- Loading Screen -->
+                <div class="importing hidden">
+                    <div class="container">
+                        <h2>Importing</h2>
+                        <div class="ldBar" id="ldBar" data-value="50"></div>
+                    </div>
                 </div>
             </div>
+
+            <footer>
+                <ul class="links">
+                    <li>Disclaimer</li>
+                </ul>
+            </footer>
         </div>
     </body>
 </html>

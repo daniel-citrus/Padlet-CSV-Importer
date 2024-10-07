@@ -38,8 +38,14 @@ async function populateBoard(api_key, board_id, data_file) {
         return sectionIDs.has(header);
     });
 
+    // Total number of post entries
+    const processCount = data_file.data.length * dataHeaders.length;
+    // Increment by one for each process
+    let currentCount = 0;
+
     for (let entry of data_file.data) {
         for (let header of dataHeaders) {
+            console.log(entry[header]);
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
 
