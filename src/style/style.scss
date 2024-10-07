@@ -136,10 +136,14 @@ table {
 }
 
 /* End CSS Reset */
+:root {
+    --primary-color: #00ec3b;
+    --background: #0d0208;
+}
 
 body {
-    background: #0d0208;
-    color: #00ec3b;
+    background: var(--background);
+    color: var(--primary-color);
 
     .hidden {
         display: none;
@@ -147,9 +151,9 @@ body {
 }
 
 button {
-    border: 2px dashed #00ec3b;
-    background: #0d0208;
-    color: #00ec3b;
+    border: 2px dashed var(--primary-color);
+    background: var(--background);
+    color: var(--primary-color);
     font-weight: bolder;
     font-family: Courier, monospace;
     font-size: 1rem;
@@ -162,5 +166,7 @@ form {
     #drop_zone {
         display: flex;
         flex-flow: column nowrap;
+        border: 3px dashed var(--primary-color);
+        padding: 25px;
     }
 }

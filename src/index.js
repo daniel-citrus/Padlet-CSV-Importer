@@ -1,13 +1,8 @@
 import './style/style.scss';
 import './input-form.js';
-import dataFile from './csv/HUSD N-Word & Hate Speech Policy Ban feedback (Responses) - Form Responses.csv';
+import './media-imports.js';
 import { limiter } from './bottleneck';
-import newFile from './csv-parser';
 import Papa from 'papaparse';
-
-/* const API_KEY =
-    'pdltp_01d47008663dee1ddceaac8f60c53b8dc2d491f5d1287135c84ab844040d7654026d3f';
-const BOARD_ID = 'ug6iwn6vavccerwj'; */
 
 export async function startImport(api_key, board_id, data_file) {
     try {
@@ -18,14 +13,13 @@ export async function startImport(api_key, board_id, data_file) {
             header: true,
         });
     } catch (error) {
-        console.log('hi');
         throw error;
     }
 }
 
 /**
  * 
- * @param {*} data - Papa parse results object 
+ * @param {*} data - File object 
     {
         data:   // array of parsed data
         errors: // array of errors
@@ -56,10 +50,6 @@ async function populateBoard(api_key, board_id, data_file) {
     }
 }
 
-// get board information
-// get board sections
-// for each entry, enter each input to the correct section
-
 function createPostJSON(body, sectionID) {
     return {
         data: {
@@ -80,15 +70,14 @@ function createPostJSON(body, sectionID) {
     };
 }
 
-// get board object
-async function getBoard(API, boardID) {
+async function getBoard(api_key, board_id) {
     try {
         const board = await fetch(
-            `https://api.padlet.dev/v1/boards/${boardID}?include=posts,sections`,
+            `https://api.padlet.dev/v1/boards/${board_id}?include=posts,sections`,
             // options
             {
                 headers: {
-                    'X-Api-Key': API,
+                    'X-Api-Key': api_key,
                     accept: 'application/vnd.api+json',
                 },
             }

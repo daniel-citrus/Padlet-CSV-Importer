@@ -1,0 +1,1 @@
+export * as padletLogo from './style/logo/Crane.svg';
