@@ -17,6 +17,8 @@ button.addEventListener('click', async (e) => {
         }
 
         if (!validateFileType(dataFile)) {
+            data_file.value = '';
+            board_id.setCustomValidity('error');
             throw new Error('Invalid file type.');
         }
 
@@ -28,7 +30,6 @@ button.addEventListener('click', async (e) => {
 
 function validateFileType(file) {
     const validTypes = ['csv'];
-
     const fileName = file.name;
     const fileType = fileName.split('.')[1];
 

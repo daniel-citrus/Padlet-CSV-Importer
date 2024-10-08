@@ -45,11 +45,12 @@ async function populateBoard(api_key, board_id, data_file) {
 
     for (let entry of data_file.data) {
         for (let header of dataHeaders) {
-            console.log(entry[header]);
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
 
             await limiter.schedule(() => {
+                currentCount++;
+                console.log(currentCount / processCount);
                 return Promise.all([insertPost(api_key, board_id, post)]);
             });
         }
