@@ -149,6 +149,7 @@ table {
 body {
     background: var(--background);
     color: var(--primary-color);
+    font-family: Courier, monospace;
 
     .hidden {
         display: none;
@@ -163,7 +164,6 @@ button {
     border: 2px dashed var(--primary-color);
     background: var(--background);
     color: var(--primary-color);
-    font-weight: bolder;
     font-family: Courier, monospace;
     font-size: 1rem;
 }
@@ -171,11 +171,12 @@ button {
 form {
     display: flex;
     flex-flow: column nowrap;
-    gap: 15px;
+    gap: 10px;
 
     #drop_zone {
         display: flex;
         flex-flow: column nowrap;
+        align-items: center;
         border: 3px dashed var(--primary-color);
         padding: 25px;
     }
@@ -193,6 +194,7 @@ form {
     gap: 5px;
     margin-bottom: 30px;
     padding: 25px 0px;
+    text-align: center;
 
     .logo .padlet_logo {
         height: 100px;

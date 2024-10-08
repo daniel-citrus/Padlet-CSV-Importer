@@ -30,23 +30,27 @@
                     id="board_id"
                     placeholder="Board ID"
                 />
+                <label for="data_file">Upload your File(s):</label>
                 <div id="drop_zone">
-                    <label for="data_file">Upload CSV File(s)</label>
-                    <input
-                        type="file"
-                        required
-                        name="data_file"
-                        id="data_file"
-                        accept=".csv"
-                        placeholder=""
-                        multiple
-                    />
+                    <div class="upload">
+                        <div>Drag & Drop File(s)</div>
+                        <input
+                            type="file"
+                            required
+                            name="data_file"
+                            id="data_file"
+                            accept=".csv"
+                            placeholder=""
+                            multiple
+                        />
+                        <div class="support">Supports: CSV</div>
+                    </div>
                 </div>
                 <button id="import" type="button">Import Data</button>
             </form>
 
             <div class="pop_ups">
-                <div class="instructions">
+                <!-- <div class="instructions">
                     <div class="requirements">
                         <h2>Required:</h2>
                         <ul>
@@ -65,7 +69,7 @@
                             <li></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!-- Loading Screen -->
                 <div class="importing hidden">
                     <div class="container">
