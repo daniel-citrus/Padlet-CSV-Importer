@@ -142,13 +142,20 @@ table {
 
 /* End CSS Reset */
 :root {
-    --primary-color: #00ec3b;
-    --background: #0d0208;
+    --background: white;
+    --primary-color: #00426a;
+    --secondary-color: #2774ae;
+    --tertiary-color: #ffc600;
+    --quaternary-color: #e07a29;
+    --text-color: #4a4b4d;
+    --other-1: #768692;
+    --other-2: #a4bcc2;
+    --other-3: #d0d3d4;
 }
 
 body {
     background: var(--background);
-    color: var(--primary-color);
+    color: var(--text-color);
     font-family: Courier, monospace;
 
     .hidden {
@@ -163,7 +170,7 @@ body {
 button {
     border: 2px dashed var(--primary-color);
     background: var(--background);
-    color: var(--primary-color);
+    color: var(--text-color);
     font-family: Courier, monospace;
     font-size: 1rem;
 }
@@ -179,10 +186,23 @@ form {
         align-items: center;
         border: 3px dashed var(--primary-color);
         padding: 25px;
+
+        .upload {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 5px;
+        }
     }
 
     button {
         padding: 10px;
+        font-weight: bolder;
+        color: var(--primary-color);
+    }
+
+    label {
+        font-weight: bold;
+        color: var(--primary-color);
     }
 }
 
