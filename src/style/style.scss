@@ -194,6 +194,26 @@ body {
     }
 }
 
+footer {
+    display: block;
+    padding: 5px;
+    font-size: 1.14rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+
+    .logoImage {
+        transition: all 0.3s ease-in;
+        transform: rotate(0deg);
+    }
+    .logoImage:hover {
+        transition: all 0.3s ease-in;
+        transform: rotate(360deg);
+    }
+}
+
 form {
     display: flex;
     flex-flow: column nowrap;
@@ -267,6 +287,7 @@ h6 {
 .main {
     display: flex;
     flex-flow: column nowrap;
+    margin: 0 auto;
     gap: 10px;
     padding: 0 10px;
 }
@@ -277,6 +298,10 @@ h6 {
             height: 120px;
             width: auto;
         }
+    }
+
+    .main {
+        max-width: 767px;
     }
 }
 @media only screen and (min-width: 991px) {
