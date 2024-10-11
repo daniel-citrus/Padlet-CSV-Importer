@@ -3,16 +3,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = (end, argv) => {
-    const mode = argv.mode;
+    const devMode = argv.mode !== 'production';
 
     return {
         entry: './src/index.js',
         module: {
             rules: [
-                {
-                    test: /\.css$/i,
-                    use: [MiniCssExtractPlugin.loader, 'css-loader'],
-                },
                 {
                     test: /\.csv$/,
                     loader: 'csv-loader',
@@ -23,13 +19,11 @@ module.exports = (end, argv) => {
                     },
                 },
                 {
-                    test: /\.s[ac]ss$/i,
+                    test: /\.(sa|sc|c)ss$/,
                     use: [
-                        // Creates `style` nodes from JS strings
-                        'style-loader',
-                        // Translates CSS into CommonJS
+                        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                         'css-loader',
-                        // Compiles Sass to CSS
+                        'postcss-loader',
                         'sass-loader',
                     ],
                 },
@@ -49,7 +43,6 @@ module.exports = (end, argv) => {
                 title: 'Padlet Importer',
                 template: './src/template.html',
             }),
-            new MiniCssExtractPlugin(),
-        ],
+        ].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
     };
 };

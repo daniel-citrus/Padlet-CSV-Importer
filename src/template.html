@@ -14,7 +14,7 @@
         </div>
         <div class="main">
             <form>
-                <label for="api_key">API Key</label>
+                <label for="api_key" class="required">API Key</label>
                 <input
                     type="password"
                     required
@@ -22,7 +22,7 @@
                     id="api_key"
                     placeholder="API Key"
                 />
-                <label for="board_id">Board ID</label>
+                <label for="board_id" class="required">Board ID</label>
                 <input
                     type="text"
                     required
@@ -30,7 +30,15 @@
                     id="board_id"
                     placeholder="Board ID"
                 />
-                <label for="data_file">Upload your File(s):</label>
+                <label for="data_file" class="required"
+                    >Upload your File(s)</label
+                >
+                <div>
+                    Before you upload your .csv file, please
+                    <a class="instructions" href="#" target="" rel=""
+                        >read the instructions</a
+                    >.
+                </div>
                 <div id="drop_zone">
                     <div class="upload">
                         <div>Drag & Drop File(s)</div>
@@ -48,62 +56,99 @@
                 </div>
                 <button id="import" type="button">Import Data</button>
             </form>
-
-            <div class="pop_ups">
-                <div class="instructions">
-                    <div class="requirements">
-                        <h2>Required:</h2>
-                        <ul>
-                            <li>API Key</li>
-                            <li>Board ID</li>
-                            <li>CSV File</li>
-                        </ul>
-                    </div>
-                    <div class="steps">
-                        <h2>Steps:</h2>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </div>
-                    <div class="disclaimer">
-                        <h2>Non-affiliate Disclaimer</h2>
-                        <div>
-                            This web site is not endorsed by, directly
-                            affiliated with, maintained, authorized, or
-                            sponsored by Padlet. All product and company names
-                            are the registered trademarks of their original
-                            owners. The use of any trade name or trademark is
-                            for identification and reference purposes only and
-                            does not imply any association with the trademark
-                            holder of their product brand.
-                        </div>
-                    </div>
-                    <div
-                        class="ldBar"
-                        data-preset="bubble"
-                        data-pattern-size="64"
-                        data-fill="/cloud.svg"
-                        style="width: 200px; height: 200px"
-                    ></div>
-                </div>
-                <!-- Loading Screen -->
-                <div class="importing hidden">
-                    <div class="container">
-                        <h2>Importing</h2>
-                        <div class="ldBar" id="ldBar" data-value="50"></div>
-                    </div>
-                </div>
-            </div>
-
             <footer>
                 <ul class="links">
                     <li>Disclaimer</li>
                 </ul>
             </footer>
+        </div>
+        <div class="pop_ups">
+            <div class="backdrop">
+                <div class="steps hidden">
+                    <h2>Instructions before you upload</h2>
+                    <ol>
+                        <li>
+                            <h3>Prepare Your CSV File</h3>
+                            <ol>
+                                <li>
+                                    Ensure that your CSV file contains headers
+                                    for each column. These headers will be used
+                                    to match sections on the Padlet board.
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Set Up Your Padlet Board</h3>
+                            <ol>
+                                <li>Choose the Wall format</li>
+                                <li>
+                                    Go to Settings -> Heading -> Layout
+                                    <ul>
+                                        <li>
+                                            e.g., if you have a header called
+                                            "Fruits," there must be a section
+                                            named "Fruits" on the board
+                                        </li>
+                                        <li>
+                                            Only create sections for the data
+                                            you want to import
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Upload via Padlet Importer</h3>
+                            <ol>
+                                <li>
+                                    Select and upload your CSV file(s).
+                                    <ul>
+                                        <li>
+                                            The program will upload data into
+                                            matching Padlet sections.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h3>Check the Board</h3>
+                            <ul>
+                                <li>
+                                    Verify the content is correctly placed in
+                                    the right sections.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="disclaimer hidden">
+                    <h2>Non-affiliate Disclaimer</h2>
+                    <div>
+                        This web site is not endorsed by, directly affiliated
+                        with, maintained, authorized, or sponsored by Padlet.
+                        All product and company names are the registered
+                        trademarks of their original owners. The use of any
+                        trade name or trademark is for identification and
+                        reference purposes only and does not imply any
+                        association with the trademark holder of their product
+                        brand.
+                    </div>
+                </div>
+                <!-- Loading Screen -->
+                <div class="importing hidden">
+                    <div class="container">
+                        <h2>Working my magic!</h2>
+                        <div
+                            class="ldBar"
+                            data-preset="bubble"
+                            data-pattern-size="64"
+                            data-fill="/cloud.svg"
+                            style="width: 200px; height: 200px"
+                        ></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
