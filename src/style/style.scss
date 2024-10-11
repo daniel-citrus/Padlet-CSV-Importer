@@ -135,16 +135,41 @@ table {
     --tertiary-color: #dbe2ef;
     --quaternary-color: #e07a29;
     --text-color: #4a4b4d;
+    --text-font-size: 1rem;
     --other-1: #768692;
     --other-2: #a4bcc2;
     --other-3: #d0d3d4;
     --important: #b8001f;
 }
 
+.instructions {
+    img {
+        width: 100%;
+        height: auto;
+        max-width: 280px;
+    }
+
+    ul {
+        padding: 0 0 0 15px;
+    }
+    ol {
+        padding: 0 0 0 30px;
+    }
+
+    ul,
+    ol {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 5px;
+        margin-bottom: 5px;
+    }
+}
+
 body {
     background: var(--background);
     color: var(--text-color);
     font-family: Courier, monospace;
+    font-size: var(--text-font-size);
 
     .hidden {
         display: none;
@@ -154,7 +179,7 @@ body {
         border: 5px solid green;
         background: var(--background);
         padding: 30px 20px;
-        max-width: 767px;
+        max-width: 700px;
         margin: 0 auto;
 
         display: flex;
@@ -192,21 +217,25 @@ body {
         border: 2px solid var(--primary-color);
         background: var(--background);
         font-family: Courier, monospace;
-        font-size: 1rem;
+        font-size: var(--text-font-size);
     }
 }
 
 footer {
+    padding: 5px;
     display: flex;
     flex-flow: column nowrap;
-    
-    padding: 5px;
-    font-size: 1.14rem;
-    display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
     box-sizing: border-box;
+    margin: 30px 0 20px 0;
+
+    .github {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 5px;
+    }
 
     .logoImage {
         transition: all 0.3s ease-in;
@@ -215,6 +244,12 @@ footer {
     .logoImage:hover {
         transition: all 0.3s ease-in;
         transform: rotate(360deg);
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
     }
 }
 
@@ -241,10 +276,20 @@ form {
         color: var(--important);
     }
 
+    input {
+        height: 20px;
+        padding: 5px;
+
+        &[type='file'] {
+            padding: 5px 0;
+        }
+    }
+
     label {
         color: var(--primary-color);
         position: relative;
         font-weight: 600;
+        font-size: 1.05rem;
 
         &.required::after {
             content: '*';
@@ -270,7 +315,7 @@ h6 {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 25px 0px;
     text-align: center;
 

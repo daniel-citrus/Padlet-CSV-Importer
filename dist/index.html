@@ -4,8 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Padlet Importer</title>
-        <script defer src="bundle.js"></script>
-    </head>
+    <script defer src="bundle.js"></script></head>
     <body>
         <div class="header">
             <div class="logo">
@@ -14,6 +13,10 @@
             <h1>Padlet Importer</h1>
         </div>
         <div class="main">
+            <div class="description">
+                Padlet Importer is ideal for large datasets. Upload and import
+                CSV data directly into a Padlet board.
+            </div>
             <form>
                 <label for="api_key" class="required">API Key</label>
                 <input
@@ -92,7 +95,7 @@
                 <button id="cancelImport">Cancel</button>
             </div>
         </div>
-        <div id="instructions" class="pop click-backdrop instructions hidden">
+        <div id="instructions" class="pop click-backdrop instructions">
             <div class="container">
                 <button class="closer">x</button>
                 <h2>Instructions before you upload</h2>
@@ -102,17 +105,33 @@
                         <ol>
                             <li>
                                 Ensure that your CSV file contains headers for
-                                each column. These headers will be used to match
-                                sections on the Padlet board.
+                                each column.
+                                <img
+                                    src="/src/style/images/CSV Data with Header.png"
+                                    alt="CSV file with with Headers"
+                                />
                             </li>
                         </ol>
                     </li>
                     <li>
                         <h3>Set Up Your Padlet Board</h3>
                         <ol>
-                            <li>Choose the Wall format</li>
                             <li>
-                                Go to Settings -> Heading -> Layout
+                                Update settings
+                                <ul>
+                                    <li>Go to Settings -> Heading -> Layout</li>
+                                    <li>Set the format to "Wall"</li>
+                                    <li>
+                                        Enable "Group posts by section" option
+                                    </li>
+                                </ul>
+                                <img
+                                    src="/src/style/images/Padlet Layout Settings.png"
+                                    alt="Padlet layout settings"
+                                />
+                            </li>
+                            <li>
+                                Create sections
                                 <ul>
                                     <li>
                                         e.g., if you have a header called
@@ -125,21 +144,17 @@
                                     </li>
                                 </ul>
                             </li>
+                            <img
+                                src="/src/style/images/Padlet Board.png"
+                                alt="Padlet Board with Sections"
+                            />
                         </ol>
                     </li>
                     <li>
                         <h3>Upload via Padlet Importer</h3>
-                        <ol>
-                            <li>
-                                Select and upload your CSV file(s).
-                                <ul>
-                                    <li>
-                                        The program will upload data into
-                                        matching Padlet sections.
-                                    </li>
-                                </ul>
-                            </li>
-                        </ol>
+                        <ul>
+                            <li>Select and upload your CSV file(s).</li>
+                        </ul>
                     </li>
                     <li>
                         <h3>Check the Board</h3>
@@ -153,7 +168,7 @@
                 </ol>
             </div>
         </div>
-        <div class="pop click-backdrop disclaimer">
+        <div class="pop click-backdrop disclaimer hidden">
             <div class="container">
                 <button class="closer">x</button>
                 <h2>Non-affiliate Disclaimer</h2>
