@@ -47,32 +47,32 @@ function disableBodyScroll(disable = true) {
 button.addEventListener('click', async (e) => {
     const API_KEY = api_key.value;
     const BOARD_ID = board_id.value;
-    const dataFile = data_file.files[0];
+    const dataFiles = data_file.files;
 
     try {
         if (!form.reportValidity()) {
             throw new Error('Form is incomplete.');
         }
 
-        if (!validateFileType(dataFile)) {
+        if (!validateFileType(dataFiles)) {
             data_file.value = '';
-            board_id.setCustomValidity('error');
             throw new Error('Invalid file type.');
         }
 
-        await startImport(API_KEY, BOARD_ID, dataFile);
+        await startImport(API_KEY, BOARD_ID, dataFiles);
     } catch (error) {
         console.error(error);
     }
 });
 
-function validateFileType(file) {
-    const validTypes = ['csv'];
-    const fileName = file.name;
-    const fileType = fileName.split('.')[1];
+function validateFileType(files) {
+    const validTypes = new Set(['csv']);
 
-    for (let type of validTypes) {
-        if (fileType === type) {
+    for (let file of files) {
+        const fileName = file.name;
+        const fileType = fileName.split('.')[1];
+
+        if (validTypes.has(fileType)) {
             return true;
         }
     }
