@@ -154,6 +154,8 @@ body {
         border: 5px solid green;
         background: var(--background);
         padding: 30px 20px;
+        max-width: 767px;
+        margin: 0 auto;
 
         display: flex;
         flex-flow: column nowrap;
@@ -195,7 +197,9 @@ body {
 }
 
 footer {
-    display: block;
+    display: flex;
+    flex-flow: column nowrap;
+    
     padding: 5px;
     font-size: 1.14rem;
     display: flex;
