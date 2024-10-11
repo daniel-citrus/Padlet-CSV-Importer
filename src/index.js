@@ -4,14 +4,16 @@ import './media-imports.js';
 import { limiter } from './bottleneck';
 import Papa from 'papaparse';
 
-export async function startImport(api_key, board_id, data_file) {
+export async function startImport(api_key, board_id, data_files) {
     try {
-        Papa.parse(data_file, {
-            complete: (results) => {
-                populateBoard(api_key, board_id, results);
-            },
-            header: true,
-        });
+        for (let file of data_files) {
+            Papa.parse(file, {
+                complete: (results) => {
+                    populateBoard(api_key, board_id, results);
+                },
+                header: true,
+            });
+        }
     } catch (error) {
         throw error;
     }
