@@ -128,16 +128,17 @@ table {
 
 /* End CSS Reset */
 :root {
-    --background: white;
-    --primary-color: #00426a;
-    --secondary-color: #2774ae;
-    --tertiary-color: #ffc600;
+    --background: #fffefa;
+    --primary-color: #384b70;
+    --primary-color-faded: hsla(220, 17%, 17%, 0.5);
+    --secondary-color: #507687;
+    --tertiary-color: #dbe2ef;
     --quaternary-color: #e07a29;
     --text-color: #4a4b4d;
     --other-1: #768692;
     --other-2: #a4bcc2;
     --other-3: #d0d3d4;
-    --important: #ff0000;
+    --important: #b8001f;
 }
 
 body {
@@ -149,17 +150,48 @@ body {
         display: none;
     }
 
+    .container {
+        border: 5px solid green;
+        background: var(--background);
+        padding: 30px 20px;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+    }
+
+    .backdrop,
+    .click-backdrop {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+
+        background: rgba(15, 15, 15, 0.4);
+        height: 100%;
+        width: 100%;
+        padding: 30px 20px;
+        overflow-y: scroll;
+
+        margin: auto 0;
+    }
+
+    &.no-scroll {
+        overflow-y: hidden;
+    }
+
     & > * {
         margin-bottom: 40px;
     }
-}
 
-button {
-    border: 2px dashed var(--primary-color);
-    background: var(--background);
-    color: var(--text-color);
-    font-family: Courier, monospace;
-    font-size: 1rem;
+    button {
+        padding: 10px;
+        font-weight: bolder;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        background: var(--background);
+        font-family: Courier, monospace;
+        font-size: 1rem;
+    }
 }
 
 form {
@@ -171,7 +203,7 @@ form {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        border: 3px dashed var(--primary-color);
+        border: 2px dashed var(--primary-color-faded);
         padding: 25px;
 
         .upload {
@@ -185,15 +217,10 @@ form {
         color: var(--important);
     }
 
-    button {
-        padding: 10px;
-        font-weight: bolder;
-        color: var(--primary-color);
-    }
-
     label {
         color: var(--primary-color);
         position: relative;
+        font-weight: 600;
 
         &.required::after {
             content: '*';
@@ -209,6 +236,7 @@ h3,
 h4,
 h5,
 h6 {
+    color: var(--primary-color);
     margin: 10px 0;
 }
 
@@ -228,24 +256,19 @@ h6 {
     }
 }
 
+.importing {
+    border: 5px solid red;
+
+    .container {
+        border: 5px solid blue;
+    }
+}
+
 .main {
     display: flex;
     flex-flow: column nowrap;
     gap: 10px;
     padding: 0 10px;
-}
-
-.pop_ups {
-    position: absolute;
-    background: rgba(14, 14, 14, 0.397);
-    height: 100%;
-    width: 100%;
-    top: 0;
-
-    .backdrop {
-        position: absolute;
-        background: red;
-    }
 }
 
 @media only screen and (min-width: 767px) {

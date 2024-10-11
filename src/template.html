@@ -35,7 +35,7 @@
                 >
                 <div>
                     Before you upload your .csv file, please
-                    <a class="instructions" href="#" target="" rel=""
+                    <a id="instructions" href="#" target="" rel=""
                         >read the instructions</a
                     >.
                 </div>
@@ -58,95 +58,100 @@
             </form>
             <footer>
                 <ul class="links">
-                    <li>Disclaimer</li>
+                    <li>
+                        <a id="disclaimer" href="#">Disclaimer</a>
+                    </li>
                 </ul>
             </footer>
         </div>
-        <div class="pop_ups">
-            <div class="backdrop">
-                <div class="steps hidden">
-                    <h2>Instructions before you upload</h2>
-                    <ol>
-                        <li>
-                            <h3>Prepare Your CSV File</h3>
-                            <ol>
-                                <li>
-                                    Ensure that your CSV file contains headers
-                                    for each column. These headers will be used
-                                    to match sections on the Padlet board.
-                                </li>
-                            </ol>
-                        </li>
-                        <li>
-                            <h3>Set Up Your Padlet Board</h3>
-                            <ol>
-                                <li>Choose the Wall format</li>
-                                <li>
-                                    Go to Settings -> Heading -> Layout
-                                    <ul>
-                                        <li>
-                                            e.g., if you have a header called
-                                            "Fruits," there must be a section
-                                            named "Fruits" on the board
-                                        </li>
-                                        <li>
-                                            Only create sections for the data
-                                            you want to import
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li>
-                            <h3>Upload via Padlet Importer</h3>
-                            <ol>
-                                <li>
-                                    Select and upload your CSV file(s).
-                                    <ul>
-                                        <li>
-                                            The program will upload data into
-                                            matching Padlet sections.
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li>
-                            <h3>Check the Board</h3>
-                            <ul>
-                                <li>
-                                    Verify the content is correctly placed in
-                                    the right sections.
-                                </li>
-                            </ul>
-                        </li>
-                    </ol>
-                </div>
-                <div class="disclaimer hidden">
-                    <h2>Non-affiliate Disclaimer</h2>
-                    <div>
-                        This web site is not endorsed by, directly affiliated
-                        with, maintained, authorized, or sponsored by Padlet.
-                        All product and company names are the registered
-                        trademarks of their original owners. The use of any
-                        trade name or trademark is for identification and
-                        reference purposes only and does not imply any
-                        association with the trademark holder of their product
-                        brand.
-                    </div>
-                </div>
-                <!-- Loading Screen -->
-                <div class="importing hidden">
-                    <div class="container">
-                        <h2>Working my magic!</h2>
-                        <div
-                            class="ldBar"
-                            data-preset="bubble"
-                            data-pattern-size="64"
-                            data-fill="/cloud.svg"
-                            style="width: 200px; height: 200px"
-                        ></div>
-                    </div>
+
+        <!-- Loading Screen -->
+        <div class="pop backdrop importing hidden">
+            <div class="container">
+                <h2>Working my magic!</h2>
+                <div
+                    class="ldBar"
+                    data-preset="bubble"
+                    data-pattern-size="64"
+                    data-fill="/cloud.svg"
+                    style="width: 200px; height: 200px"
+                ></div>
+                <button id="cancelImport">Cancel</button>
+            </div>
+        </div>
+        <div id="instructions" class="pop click-backdrop instructions hidden">
+            <div class="container">
+                <button class="closer">x</button>
+                <h2>Instructions before you upload</h2>
+                <ol>
+                    <li>
+                        <h3>Prepare Your CSV File</h3>
+                        <ol>
+                            <li>
+                                Ensure that your CSV file contains headers for
+                                each column. These headers will be used to match
+                                sections on the Padlet board.
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h3>Set Up Your Padlet Board</h3>
+                        <ol>
+                            <li>Choose the Wall format</li>
+                            <li>
+                                Go to Settings -> Heading -> Layout
+                                <ul>
+                                    <li>
+                                        e.g., if you have a header called
+                                        "Fruits," there must be a section named
+                                        "Fruits" on the board
+                                    </li>
+                                    <li>
+                                        Only create sections for the data you
+                                        want to import
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h3>Upload via Padlet Importer</h3>
+                        <ol>
+                            <li>
+                                Select and upload your CSV file(s).
+                                <ul>
+                                    <li>
+                                        The program will upload data into
+                                        matching Padlet sections.
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h3>Check the Board</h3>
+                        <ul>
+                            <li>
+                                Verify the content is correctly placed in the
+                                right sections.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="pop click-backdrop disclaimer">
+            <div class="container">
+                <button class="closer">x</button>
+                <h2>Non-affiliate Disclaimer</h2>
+                <div>
+                    This web site is not endorsed by, directly affiliated with,
+                    maintained, authorized, or sponsored by Padlet. All product
+                    and company names are the registered trademarks of their
+                    original owners. The use of any trade name or trademark is
+                    for identification and reference purposes only and does not
+                    imply any association with the trademark holder of their
+                    product brand.
                 </div>
             </div>
         </div>
