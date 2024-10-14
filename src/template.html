@@ -61,11 +61,6 @@
                 <button id="import" type="button">Import Data</button>
             </form>
             <footer>
-                <ul class="links">
-                    <li>
-                        <a id="disclaimer" href="#">Disclaimer</a>
-                    </li>
-                </ul>
                 <div class="github">
                     daniel-citrus<a
                         href="https://github.com/daniel-citrus/Padlet-CSV-Importer"
@@ -78,6 +73,11 @@
                     /></a>
                 </div>
                 <div class="copyright">Copyright © 2024.</div>
+                <ul class="links">
+                    <li>
+                        <a id="disclaimer" href="#">Disclaimer</a>
+                    </li>
+                </ul>
             </footer>
         </div>
 
@@ -95,7 +95,7 @@
                 <button id="cancelImport">Cancel</button>
             </div>
         </div>
-        <div id="instructions" class="pop click-backdrop instructions">
+        <div id="instructions" class="pop click-backdrop instructions hidden">
             <div class="container">
                 <button class="closer">x</button>
                 <h2>Instructions before you upload</h2>
@@ -152,9 +152,14 @@
                     </li>
                     <li>
                         <h3>Upload via Padlet Importer</h3>
-                        <ul>
-                            <li>Select and upload your CSV file(s).</li>
-                        </ul>
+                        <ol>
+                            <li>Complete the form</li>
+                            <li>Upload your CSV file(s).</li>
+                            <img
+                                src="/src/style/images/importing.gif"
+                                alt="Padlet Importer populating Padlet Board"
+                            />
+                        </ol>
                     </li>
                     <li>
                         <h3>Check the Board</h3>

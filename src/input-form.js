@@ -3,6 +3,7 @@ import { startImport } from './index.js';
 const button = document.getElementById('import');
 const api_key = document.getElementById('api_key');
 const board_id = document.getElementById('board_id');
+const dropZone = document.getElementById('drop_zone');
 const data_file = document.getElementById('data_file');
 const form = document.querySelector('form');
 
@@ -31,6 +32,17 @@ const instructionsPop = document.querySelector('.pop.instructions');
 
             disableBodyScroll(false);
         });
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+    });
+
+    dropZone.addEventListener('dragenter', () => {
+        console.log('hello');
+    });
+    dropZone.addEventListener('dragleave', () => {
+        console.log('goodbye');
     });
 })();
 
