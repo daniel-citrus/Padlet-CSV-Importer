@@ -127,6 +127,17 @@ table {
 }
 
 /* End CSS Reset */
+
+@font-face {
+    font-family: Montserrat;
+    src: url(./font/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Hind;
+    src: url(./font/Hind/Hind-Regular.ttf);
+}
+
 :root {
     --background: #fffefa;
     --primary-color: #384b70;
@@ -197,7 +208,7 @@ table {
 body {
     background: var(--background);
     color: var(--text-color);
-    font-family: Courier, monospace;
+    font-family: Hind, sans-serif;
     font-size: var(--text-font-size);
 
     .hidden {
@@ -302,6 +313,7 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: Montserrat;
     color: var(--primary-color);
     margin: 10px 0;
 }
