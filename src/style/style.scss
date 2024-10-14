@@ -154,8 +154,10 @@ table {
 }
 
 .pop {
+    line-height: 1.5rem;
+
     .container {
-        border: 5px solid green;
+        border: 2px solid var(--primary-color);
         background: var(--background);
         padding: 30px 20px;
         max-width: 700px;
@@ -164,6 +166,47 @@ table {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
+
+        position: relative;
+    }
+
+    .closer {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+        height: 25px;
+        width: 25px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 100%;
+        color: red;
+
+        &::before,
+        &::after {
+            transition: width 50ms ease-in-out;
+            left: 47%;
+            content: '';
+            position: absolute;
+            background: var(--primary-color);
+            height: 20px;
+            width: 2px;
+            border-radius: 10px;
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        &::after {
+            transform: rotate(-45deg);
+        }
+
+        &:hover {
+            &::before,
+            &::after {
+                width: 3px;
+            }
+        }
     }
 }
 
@@ -186,7 +229,7 @@ table {
     img {
         width: 100%;
         height: auto;
-        max-width: 280px;
+        max-width: 500px;
     }
 
     ul {
@@ -201,7 +244,7 @@ table {
         display: flex;
         flex-flow: column nowrap;
         gap: 5px;
-        margin-bottom: 5px;
+        margin: 0 0 10px 0;
     }
 }
 
@@ -219,21 +262,17 @@ body {
         overflow-y: hidden;
     }
 
-    & > * {
-        margin-bottom: 40px;
-    }
-
     a:hover {
         text-decoration: none;
     }
 
     button {
         padding: 10px;
-        font-weight: bolder;
         color: var(--primary-color);
         border: 2px solid var(--primary-color);
         background: var(--background);
-        font-family: Courier, monospace;
+        font-family: Hind, sans-serif;
+        font-weight: 600;
         font-size: var(--text-font-size);
     }
 }
@@ -276,8 +315,12 @@ form {
     flex-flow: column nowrap;
     gap: 10px;
 
-    .legend .required {
-        color: var(--important);
+    .legend {
+        font-size: 0.8rem;
+
+        .required {
+            color: var(--important);
+        }
     }
 
     input {
@@ -315,7 +358,14 @@ h5,
 h6 {
     font-family: Montserrat;
     color: var(--primary-color);
-    margin: 10px 0;
+    margin: 10px 0 25px 0;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    margin: 5px 0 10px 0;
 }
 
 .header {
@@ -324,7 +374,6 @@ h6 {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin-bottom: 20px;
     padding: 25px 0px;
     text-align: center;
 
@@ -346,7 +395,7 @@ h6 {
     display: flex;
     flex-flow: column nowrap;
     margin: 0 auto;
-    gap: 10px;
+    gap: 20px;
     padding: 0 10px;
 }
 
@@ -363,6 +412,10 @@ h6 {
     }
 }
 @media only screen and (min-width: 991px) {
+    .main {
+        gap: 30px;
+    }
 }
+
 @media only screen and (min-width: 1279px) {
 }

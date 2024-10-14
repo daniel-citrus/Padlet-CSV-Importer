@@ -12,6 +12,7 @@ const disclaimerPop = document.querySelector('.pop.disclaimer');
 const clickBackdrops = document.querySelectorAll('.click-backdrop');
 const instructionsLink = document.getElementById('instructions');
 const instructionsPop = document.querySelector('.pop.instructions');
+const closers = document.querySelectorAll('button.closer');
 
 (() => {
     disclaimerLink.addEventListener('click', () => {
@@ -31,6 +32,13 @@ const instructionsPop = document.querySelector('.pop.instructions');
             }
 
             disableBodyScroll(false);
+        });
+    });
+
+    closers.forEach((closer) => {
+        closer.addEventListener('click', (e) => {
+            const popper = e.target.parentElement.parentElement;
+            popper.classList.add('hidden');
         });
     });
 })();
