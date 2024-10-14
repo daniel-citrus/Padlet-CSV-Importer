@@ -114,8 +114,13 @@ async function insertPost(API, boardID, post) {
     }
 }
 
-// get all existing sections
-// create map for sections {title: id}
+/**
+ * Create a Map and store Board Section titles and IDs.
+ * Map {title<string>: id<string>}
+ * @param {*} API
+ * @param {*} boardID
+ * @returns
+ */
 async function gatherSections(API, boardID) {
     try {
         const boardData = await getBoard(API, boardID)
