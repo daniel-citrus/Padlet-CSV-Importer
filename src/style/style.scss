@@ -265,23 +265,6 @@ form {
     flex-flow: column nowrap;
     gap: 10px;
 
-    #drop_zone {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        border: 2px dashed var(--primary-color-faded);
-        padding: 25px;
-
-        .upload {
-            display: flex;
-            flex-flow: column nowrap;
-            gap: 5px;
-        }
-
-        &.dragHover {
-        }
-    }
-
     .legend .required {
         color: var(--important);
     }
@@ -306,6 +289,10 @@ form {
             position: absolute;
             color: var(--important);
         }
+    }
+
+    #import {
+        margin-top: 15px;
     }
 }
 
