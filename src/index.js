@@ -29,20 +29,15 @@ export async function startImport(api_key, board_id, data_files) {
     }
  */
 async function populateBoard(api_key, board_id, data_file) {
-    // get headers from data
     let dataHeaders = data_file.meta.fields;
-
-    // using headers, get section ids from board
     const sectionIDs = await gatherSections(api_key, board_id);
 
-    // delete dataHeaders that do not exist on the board
     dataHeaders = dataHeaders.filter((header) => {
         return sectionIDs.has(header);
     });
 
-    // Total number of post entries
+    // progress tracker
     const processCount = data_file.data.length * dataHeaders.length;
-    // Increment by one for each process
     let currentCount = 0;
 
     for (let entry of data_file.data) {
@@ -52,7 +47,7 @@ async function populateBoard(api_key, board_id, data_file) {
 
             await limiter.schedule(() => {
                 currentCount++;
-                console.log(currentCount / processCount);
+                const progress = currentCount / processCount;
                 return Promise.all([insertPost(api_key, board_id, post)]);
             });
         }
@@ -83,7 +78,6 @@ async function getBoard(api_key, board_id) {
     try {
         const board = await fetch(
             `https://api.padlet.dev/v1/boards/${board_id}?include=posts,sections`,
-            // options
             {
                 headers: {
                     'X-Api-Key': api_key,
