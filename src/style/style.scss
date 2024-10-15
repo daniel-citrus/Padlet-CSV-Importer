@@ -274,6 +274,7 @@ body {
         font-family: Hind, sans-serif;
         font-weight: 600;
         font-size: var(--text-font-size);
+        transition: all 60ms;
     }
 }
 
@@ -297,6 +298,8 @@ footer {
     .logoImage {
         transition: all 0.3s ease-in;
         transform: rotate(0deg);
+        height: 25px;
+        width: auto;
     }
     .logoImage:hover {
         transition: all 0.3s ease-in;
@@ -325,6 +328,15 @@ form {
 
     button {
         background: var(--primary-color);
+        color: var(--background);
+        border: 2px solid var(--secondary-color);
+
+        &:hover {
+            cursor: pointer;
+            border: 2px solid var(--primary-color);
+            background: var(--background);
+            color: var(--primary-color);
+        }
     }
 
     input {
