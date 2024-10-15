@@ -142,6 +142,8 @@ table {
     --background: #fffefa;
     --primary-color: #384b70;
     --primary-color-faded: hsla(220, 17%, 17%, 0.5);
+    --primary-color-transparent: #384b7008;
+    --primary-color-transparent-darker: #384b70d5;
     --secondary-color: #507687;
     --tertiary-color: #dbe2ef;
     --quaternary-color: #e07a29;
@@ -316,6 +318,7 @@ form {
     flex-flow: column nowrap;
     gap: 10px;
 
+<<<<<<< HEAD
     .legend {
         font-size: 0.8rem;
 
@@ -335,6 +338,33 @@ form {
             background: var(--background);
             color: var(--primary-color);
         }
+=======
+    #drop_zone {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        border: 2px dashed var(--primary-color-faded);
+        background-color: var(--primary-color-transparent);
+        padding: 25px;
+        font-weight: 600;
+        transition: all 100ms ease-in-out;
+
+        .upload {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 5px;
+        }
+
+        &.dragHover {
+            border-color: var(--other-3);
+            background-color: var(--primary-color-transparent-darker);
+            color: white;
+        }
+    }
+
+    .legend .required {
+        color: var(--important);
+>>>>>>> f757975 (drop and drop style)
     }
 
     input {
