@@ -35,13 +35,13 @@ const closers = document.querySelectorAll('button.closer');
         });
     });
 
-<<<<<<< HEAD
     closers.forEach((closer) => {
         closer.addEventListener('click', (e) => {
             const popper = e.target.parentElement.parentElement;
             popper.classList.add('hidden');
         });
-=======
+    });
+
     dropZone.addEventListener('dragover', (e) => {
         console.log('File(s) in drop zone');
 
@@ -75,7 +75,6 @@ const closers = document.querySelectorAll('button.closer');
     });
     dropZone.addEventListener('dragleave', () => {
         dropZone.classList.remove('dragHover');
->>>>>>> f757975 (drop and drop style)
     });
 })();
 

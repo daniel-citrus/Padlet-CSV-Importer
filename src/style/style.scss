@@ -318,7 +318,6 @@ form {
     flex-flow: column nowrap;
     gap: 10px;
 
-<<<<<<< HEAD
     .legend {
         font-size: 0.8rem;
 
@@ -338,59 +337,58 @@ form {
             background: var(--background);
             color: var(--primary-color);
         }
-=======
-    #drop_zone {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        border: 2px dashed var(--primary-color-faded);
-        background-color: var(--primary-color-transparent);
-        padding: 25px;
-        font-weight: 600;
-        transition: all 100ms ease-in-out;
-
-        .upload {
+        #drop_zone {
             display: flex;
             flex-flow: column nowrap;
-            gap: 5px;
+            align-items: center;
+            border: 2px dashed var(--primary-color-faded);
+            background-color: var(--primary-color-transparent);
+            padding: 25px;
+            font-weight: 600;
+            transition: all 100ms ease-in-out;
+
+            .upload {
+                display: flex;
+                flex-flow: column nowrap;
+                gap: 5px;
+            }
+
+            &.dragHover {
+                border-color: var(--other-3);
+                background-color: var(--primary-color-transparent-darker);
+                color: white;
+            }
         }
 
-        &.dragHover {
-            border-color: var(--other-3);
-            background-color: var(--primary-color-transparent-darker);
-            color: white;
-        }
-    }
-
-    .legend .required {
-        color: var(--important);
->>>>>>> f757975 (drop and drop style)
-    }
-
-    input {
-        height: 20px;
-        padding: 5px;
-
-        &[type='file'] {
-            padding: 5px 0;
-        }
-    }
-
-    label {
-        color: var(--primary-color);
-        position: relative;
-        font-weight: 600;
-        font-size: 1.05rem;
-
-        &.required::after {
-            content: '*';
-            position: absolute;
+        .legend .required {
             color: var(--important);
         }
-    }
 
-    #import {
-        margin-top: 15px;
+        input {
+            height: 20px;
+            padding: 5px;
+
+            &[type='file'] {
+                padding: 5px 0;
+            }
+        }
+
+        label {
+            color: var(--primary-color);
+            position: relative;
+            font-weight: 600;
+            font-size: 1.05rem;
+
+            &.required::after {
+                content: '*';
+                position: absolute;
+                color: var(--important);
+            }
+        }
+
+        #import {
+            margin-top: 15px;
+        }
     }
 }
 
