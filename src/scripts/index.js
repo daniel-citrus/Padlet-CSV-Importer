@@ -7,6 +7,8 @@ import Papa from 'papaparse';
 
 export async function startImport(api_key, board_id, data_files) {
     try {
+        console.log('start');
+
         for (let file of data_files) {
             Papa.parse(file, {
                 complete: async (results) => {
@@ -14,6 +16,7 @@ export async function startImport(api_key, board_id, data_files) {
                 },
                 header: true,
             });
+            console.log('done');
         }
     } catch (error) {
         throw error;
@@ -52,11 +55,14 @@ async function populateBoard(api_key, board_id, data_file) {
             currentCount++;
             const progress = currentCount / processCount;
             await limiter.schedule(() => {
-                loader.updateLoader(progress);
+                console.log(progress);
+                /* loader.updateLoader(progress); */
                 return Promise.all([insertPost(api_key, board_id, post)]);
             });
         }
     }
+
+    loader.toggleLoadScreen(false);
 }
 
 function createPostJSON(body, sectionID) {
