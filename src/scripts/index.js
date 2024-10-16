@@ -1,4 +1,4 @@
-import './style/style.scss';
+import '../style/style.scss';
 import './input-form.js';
 import './media-imports.js';
 import { limiter } from './bottleneck';
@@ -39,6 +39,8 @@ async function populateBoard(api_key, board_id, data_file) {
     // progress tracker
     const processCount = data_file.data.length * dataHeaders.length;
     let currentCount = 0;
+
+    // enable progress bar
 
     for (let entry of data_file.data) {
         for (let header of dataHeaders) {

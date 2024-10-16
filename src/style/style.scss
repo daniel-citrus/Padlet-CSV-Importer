@@ -298,7 +298,10 @@ footer {
     .logoImage {
         transition: all 0.3s ease-in;
         transform: rotate(0deg);
+        height: 25px;
+        width: auto;
     }
+
     .logoImage:hover {
         transition: all 0.3s ease-in;
         transform: rotate(360deg);
@@ -398,10 +401,7 @@ h6 {
 }
 
 .importing {
-    border: 5px solid red;
-
     .container {
-        border: 5px solid blue;
     }
 }
 

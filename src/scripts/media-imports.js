@@ -1,4 +1,4 @@
-import padletLogo from './style/logo/Crane.svg';
+import padletLogo from '../style/logo/Crane.svg';
 
 const logoElements = document.querySelectorAll('img.padlet_logo');
 
