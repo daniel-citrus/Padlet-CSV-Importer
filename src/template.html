@@ -78,10 +78,15 @@
         </div>
 
         <!-- Loading Screen -->
-        <div class="pop backdrop importing">
+        <div class="pop backdrop importing hidden">
             <div class="container">
                 <h2>Working my magic!</h2>
-                <div class="ldBar" data-value="50"></div>
+                <div
+                    id="loadingBar"
+                    data-preset="bubble"
+                    class="ldBar label-center"
+                    data-value="35"
+                ></div>
                 <button id="cancelImport">Cancel</button>
             </div>
         </div>

@@ -1,6 +1,7 @@
 import '../style/style.scss';
 import './input-form.js';
 import './media-imports.js';
+import * as loader from './loading-bar/loading-bar-controller.js';
 import { limiter } from './bottleneck';
 import Papa from 'papaparse';
 
@@ -8,8 +9,8 @@ export async function startImport(api_key, board_id, data_files) {
     try {
         for (let file of data_files) {
             Papa.parse(file, {
-                complete: (results) => {
-                    populateBoard(api_key, board_id, results);
+                complete: async (results) => {
+                    await populateBoard(api_key, board_id, results);
                 },
                 header: true,
             });
@@ -20,7 +21,6 @@ export async function startImport(api_key, board_id, data_files) {
 }
 
 /**
- * 
  * @param {*} data - File object 
     {
         data:   // array of parsed data
@@ -41,15 +41,18 @@ async function populateBoard(api_key, board_id, data_file) {
     let currentCount = 0;
 
     // enable progress bar
+    loader.toggleLoadScreen();
+    loader.updateLoader(0);
 
     for (let entry of data_file.data) {
         for (let header of dataHeaders) {
             const sectionID = sectionIDs.get(header);
             const post = createPostJSON(entry[header], sectionID);
 
+            currentCount++;
+            const progress = currentCount / processCount;
             await limiter.schedule(() => {
-                currentCount++;
-                const progress = currentCount / processCount;
+                loader.updateLoader(progress);
                 return Promise.all([insertPost(api_key, board_id, post)]);
             });
         }
